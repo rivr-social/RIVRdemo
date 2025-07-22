@@ -1,0 +1,21 @@
+
+> RIVR@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.2.4
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.141:3000
+
+ ✓ Starting...
+ ✓ Ready in 1839ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.6s (1253 modules)
+ GET / 200 in 4387ms
+ ✓ Compiled in 852ms (587 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 813ms (1243 modules)
+ GET /community-gathering.png 404 in 1256ms
+ ○ Compiling /groups/[id] ...
+ ✓ Compiled /groups/[id] in 3.8s (1634 modules)
+ GET /groups/group1 200 in 5243ms
+ GET /groups/group1 200 in 72ms

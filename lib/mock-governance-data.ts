@@ -1,0 +1,390 @@
+import { type Issue, IssueStatus, type Poll, type Proposal, ProposalStatus, VoteType } from "./types"
+import { users } from "./mock-data"
+
+export const issues: Issue[] = [
+  {
+    id: "1",
+    title: "Update community guidelines for marketplace listings",
+    description:
+      "Our current guidelines are outdated and need to be revised to address recent issues with inappropriate listings.",
+    creator: users[0],
+    createdAt: "2023-05-15T10:30:00Z",
+    status: IssueStatus.Open,
+    votes: {
+      up: 24,
+      down: 3,
+    },
+    comments: 12,
+    tags: ["community", "guidelines", "marketplace"],
+    groupId: "group1",
+  },
+  {
+    id: "2",
+    title: "Improve onboarding process for new members",
+    description:
+      "New members are having trouble understanding how to participate in group activities. We need a better onboarding flow.",
+    creator: users[2],
+    createdAt: "2023-05-10T14:45:00Z",
+    status: IssueStatus.InProgress,
+    votes: {
+      up: 42,
+      down: 1,
+    },
+    comments: 18,
+    tags: ["onboarding", "user-experience", "new-members"],
+    groupId: "group1",
+  },
+  {
+    id: "3",
+    title: "Create a code of conduct for group events",
+    description:
+      "We need a clear code of conduct for in-person and virtual events to ensure everyone feels safe and welcome.",
+    creator: users[1],
+    createdAt: "2023-05-05T09:15:00Z",
+    status: IssueStatus.Resolved,
+    votes: {
+      up: 38,
+      down: 2,
+    },
+    comments: 15,
+    tags: ["events", "code-of-conduct", "safety"],
+    groupId: "group1",
+  },
+  {
+    id: "4",
+    title: "Add support for recurring events",
+    description: "Many of our events are recurring (weekly, monthly), but our platform doesn't support this well.",
+    creator: users[3],
+    createdAt: "2023-04-28T16:20:00Z",
+    status: IssueStatus.Open,
+    votes: {
+      up: 56,
+      down: 0,
+    },
+    comments: 22,
+    tags: ["events", "feature-request", "calendar"],
+    groupId: "group2",
+  },
+  {
+    id: "5",
+    title: "Establish group meeting schedule",
+    description: "We need to decide on a regular meeting schedule that works for most members.",
+    creator: users[1],
+    createdAt: "2023-05-20T10:00:00Z",
+    status: IssueStatus.Open,
+    votes: {
+      up: 15,
+      down: 2,
+    },
+    comments: 8,
+    tags: ["meetings", "schedule"],
+    groupId: "group2",
+  },
+  {
+    id: "6",
+    title: "Establish carbon offset program for group events",
+    description: "Create a system to calculate and offset carbon emissions from all group events and activities.",
+    creator: users[0],
+    createdAt: "2023-05-22T09:00:00Z",
+    status: IssueStatus.Open,
+    votes: {
+      up: 67,
+      down: 4,
+    },
+    comments: 23,
+    tags: ["carbon-offset", "events", "sustainability"],
+    groupId: "group1",
+  },
+  {
+    id: "7",
+    title: "Partner with local schools for climate education",
+    description: "Develop partnerships with schools to provide climate education workshops and resources.",
+    creator: users[2],
+    createdAt: "2023-05-20T14:20:00Z",
+    status: IssueStatus.InProgress,
+    votes: {
+      up: 89,
+      down: 2,
+    },
+    comments: 31,
+    tags: ["education", "schools", "outreach"],
+    groupId: "group1",
+  },
+]
+
+export const polls: Poll[] = [
+  {
+    id: "1",
+    question: "What should be our next community project focus?",
+    description: "We have resources for one major project this quarter. Please vote on your preferred focus area.",
+    creator: users[0],
+    createdAt: "2023-05-18T11:00:00Z",
+    endDate: "2023-05-25T23:59:59Z",
+    options: [
+      { id: "a", text: "Urban garden expansion", votes: 45 },
+      { id: "b", text: "Youth mentorship program", votes: 32 },
+      { id: "c", text: "Local business support network", votes: 28 },
+      { id: "d", text: "Community art installation", votes: 19 },
+    ],
+    totalVotes: 124,
+    groupId: "group1",
+    userVoted: "a",
+  },
+  {
+    id: "2",
+    question: "When should we schedule our monthly community meetings?",
+    description: "We want to find the best time for most members to attend our monthly meetings.",
+    creator: users[1],
+    createdAt: "2023-05-12T13:30:00Z",
+    endDate: "2023-05-19T23:59:59Z",
+    options: [
+      { id: "a", text: "Weekday evenings (6-8pm)", votes: 67 },
+      { id: "b", text: "Weekday afternoons (2-4pm)", votes: 23 },
+      { id: "c", text: "Weekend mornings (10am-12pm)", votes: 42 },
+      { id: "d", text: "Weekend afternoons (2-4pm)", votes: 31 },
+    ],
+    totalVotes: 163,
+    groupId: "group1",
+  },
+  {
+    id: "3",
+    question: "Which platform should we use for virtual events?",
+    creator: users[2],
+    createdAt: "2023-05-08T15:45:00Z",
+    endDate: "2023-05-15T23:59:59Z",
+    options: [
+      { id: "a", text: "Zoom", votes: 48 },
+      { id: "b", text: "Google Meet", votes: 35 },
+      { id: "c", text: "Microsoft Teams", votes: 22 },
+      { id: "d", text: "Discord", votes: 41 },
+    ],
+    totalVotes: 146,
+    groupId: "group2",
+  },
+  {
+    id: "4",
+    question: "What type of events should we prioritize?",
+    description: "Help us decide what types of events to focus on this season.",
+    creator: users[3],
+    createdAt: "2023-05-15T12:00:00Z",
+    endDate: "2023-05-22T23:59:59Z",
+    options: [
+      { id: "a", text: "Educational workshops", votes: 25 },
+      { id: "b", text: "Social gatherings", votes: 18 },
+      { id: "c", text: "Community service", votes: 22 },
+      { id: "d", text: "Skill sharing sessions", votes: 15 },
+    ],
+    totalVotes: 80,
+    groupId: "group2",
+  },
+  {
+    id: "5",
+    question: "Which climate action should be our top priority this year?",
+    description: "Help us decide where to focus our collective energy and resources for maximum impact.",
+    creator: users[0],
+    createdAt: "2023-05-25T10:00:00Z",
+    endDate: "2023-06-01T23:59:59Z",
+    options: [
+      { id: "a", text: "Renewable energy advocacy", votes: 78 },
+      { id: "b", text: "Transportation electrification", votes: 65 },
+      { id: "c", text: "Building efficiency programs", votes: 52 },
+      { id: "d", text: "Climate education outreach", votes: 91 },
+    ],
+    totalVotes: 286,
+    groupId: "group1",
+    userVoted: "d",
+  },
+  {
+    id: "6",
+    question: "How often should we hold climate action workshops?",
+    description: "We want to provide regular educational opportunities for our members and the community.",
+    creator: users[2],
+    createdAt: "2023-05-23T16:30:00Z",
+    endDate: "2023-05-30T23:59:59Z",
+    options: [
+      { id: "a", text: "Weekly", votes: 23 },
+      { id: "b", text: "Bi-weekly", votes: 45 },
+      { id: "c", text: "Monthly", votes: 67 },
+      { id: "d", text: "Quarterly", votes: 12 },
+    ],
+    totalVotes: 147,
+    groupId: "group1",
+  },
+]
+
+export const proposals: Proposal[] = [
+  {
+    id: "1",
+    title: "Allocate 20% of group budget to educational workshops",
+    description:
+      "This proposal suggests allocating 20% of our annual budget to organizing educational workshops for members and the broader community.",
+    creator: users[0],
+    createdAt: "2023-05-16T09:00:00Z",
+    status: ProposalStatus.Active,
+    votes: {
+      yes: 78,
+      no: 12,
+      abstain: 5,
+    },
+    quorum: 100,
+    threshold: 66, // 66% needed to pass
+    endDate: "2023-05-30T23:59:59Z",
+    comments: 24,
+    tags: ["budget", "education", "workshops"],
+    groupId: "group1",
+    userVote: VoteType.Yes,
+  },
+  {
+    id: "2",
+    title: "Establish a mentorship program for new members",
+    description:
+      "This proposal outlines a structured mentorship program to help new members integrate into the community and develop relevant skills.",
+    creator: users[1],
+    createdAt: "2023-05-10T14:30:00Z",
+    status: ProposalStatus.Passed,
+    votes: {
+      yes: 92,
+      no: 8,
+      abstain: 3,
+    },
+    quorum: 80,
+    threshold: 60,
+    endDate: "2023-05-24T23:59:59Z",
+    comments: 31,
+    tags: ["mentorship", "new-members", "community-building"],
+    groupId: "group1",
+  },
+  {
+    id: "3",
+    title: "Partner with local businesses for member discounts",
+    description:
+      "This proposal suggests establishing partnerships with local businesses to offer discounts to our members, supporting both our community and local economy.",
+    creator: users[2],
+    createdAt: "2023-05-05T11:15:00Z",
+    status: ProposalStatus.Implemented,
+    votes: {
+      yes: 105,
+      no: 4,
+      abstain: 2,
+    },
+    quorum: 75,
+    threshold: 70,
+    endDate: "2023-05-19T23:59:59Z",
+    comments: 18,
+    tags: ["local-business", "partnerships", "member-benefits"],
+    groupId: "group1",
+  },
+  {
+    id: "4",
+    title: "Create a dedicated fund for community art projects",
+    description:
+      "This proposal recommends creating a dedicated fund to support community art projects, with a transparent application and selection process.",
+    creator: users[3],
+    createdAt: "2023-04-28T10:45:00Z",
+    status: ProposalStatus.Failed,
+    votes: {
+      yes: 45,
+      no: 52,
+      abstain: 8,
+    },
+    quorum: 100,
+    threshold: 60,
+    endDate: "2023-05-12T23:59:59Z",
+    comments: 37,
+    tags: ["art", "funding", "community-projects"],
+    groupId: "group2",
+  },
+  {
+    id: "5",
+    title: "Create a group resource library",
+    description:
+      "This proposal suggests creating a shared resource library where members can borrow tools, books, and equipment.",
+    creator: users[4],
+    createdAt: "2023-05-18T16:00:00Z",
+    status: ProposalStatus.Active,
+    votes: {
+      yes: 35,
+      no: 8,
+      abstain: 2,
+    },
+    quorum: 50,
+    threshold: 60,
+    endDate: "2023-06-01T23:59:59Z",
+    comments: 12,
+    tags: ["resources", "sharing", "library"],
+    groupId: "group2",
+  },
+  {
+    id: "6",
+    title: "Allocate $5,000 for community solar project",
+    description:
+      "This proposal requests funding to support a community solar installation that will benefit low-income households in our area.",
+    creator: users[0],
+    createdAt: "2023-05-24T11:00:00Z",
+    status: ProposalStatus.Active,
+    votes: {
+      yes: 156,
+      no: 23,
+      abstain: 8,
+    },
+    quorum: 150,
+    threshold: 75,
+    endDate: "2023-06-07T23:59:59Z",
+    comments: 42,
+    tags: ["solar", "funding", "community-benefit"],
+    groupId: "group1",
+    userVote: VoteType.Yes,
+  },
+  {
+    id: "7",
+    title: "Create climate emergency response plan",
+    description:
+      "Develop a comprehensive plan for how our group will respond to climate emergencies and support affected communities.",
+    creator: users[2],
+    createdAt: "2023-05-21T13:45:00Z",
+    status: ProposalStatus.Active,
+    votes: {
+      yes: 134,
+      no: 12,
+      abstain: 15,
+    },
+    quorum: 120,
+    threshold: 70,
+    endDate: "2023-06-05T23:59:59Z",
+    comments: 28,
+    tags: ["emergency", "planning", "community-support"],
+    groupId: "group1",
+  },
+  {
+    id: "8",
+    title: "Ban single-use plastics at all group events",
+    description:
+      "This proposal would prohibit single-use plastic items at all Climate Action Coalition events and provide sustainable alternatives.",
+    creator: users[1],
+    createdAt: "2023-05-18T09:30:00Z",
+    status: ProposalStatus.Passed,
+    votes: {
+      yes: 198,
+      no: 15,
+      abstain: 7,
+    },
+    quorum: 150,
+    threshold: 66,
+    endDate: "2023-06-01T23:59:59Z",
+    comments: 35,
+    tags: ["sustainability", "events", "plastic-free"],
+    groupId: "group1",
+  },
+]
+
+export function getIssuesByGroupId(groupId: string): Issue[] {
+  return issues.filter((issue) => issue.groupId === groupId)
+}
+
+export function getPollsByGroupId(groupId: string): Poll[] {
+  return polls.filter((poll) => poll.groupId === groupId)
+}
+
+export function getProposalsByGroupId(groupId: string): Proposal[] {
+  return proposals.filter((proposal) => proposal.groupId === groupId)
+}
