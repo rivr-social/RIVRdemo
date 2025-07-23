@@ -24,15 +24,14 @@ export default function RingDocsPage({ params }: RingDocsPageProps) {
   const ringDocs = mockDocuments.filter((doc) => doc.groupId === ringId)
 
   const coreDocMeta: Array<{ title: string; category: string }> = [
-    { title: "Mission Statement", category: "Foundational" },
-    { title: "Vision Statement", category: "Foundational" },
-    { title: "Manifesto", category: "Foundational" },
-    { title: "Whitepaper", category: "Foundational" },
-    { title: "Litepaper", category: "Foundational" },
-    { title: "Articles of Incorporation", category: "Governance" },
-    { title: "Bylaws", category: "Governance" },
-    { title: "Operating Agreement", category: "Governance" },
-    { title: "Member-Class Agreements", category: "Governance" },
+    { title: "Mutual Aid Charter", category: "Foundational" },
+    { title: "Resource Sharing Agreement", category: "Governance" },
+    { title: "Community Guidelines", category: "Governance" },
+    { title: "Conflict Resolution Process", category: "Governance" },
+    { title: "Treasury Protocols", category: "Economic" },
+    { title: "Asset Pooling Agreement", category: "Economic" },
+    { title: "Member Contribution Guidelines", category: "Economic" },
+    { title: "Voucher System Rules", category: "Economic" },
   ]
 
   const coreDocs: Document[] = coreDocMeta.map(({ title, category }) => {
@@ -43,13 +42,13 @@ export default function RingDocsPage({ params }: RingDocsPageProps) {
       id: `${ringId}-${slug}`,
       title,
       description: `${title} for this ring`,
-      content: `# ${title}\n\n*TBD*`,
+      content: `# ${title}\n\n*This document is being developed by the ring community. Please contact ring stewards for the most current version or to contribute to its development.*\n\n## Purpose\nThis document will outline the ring's approach to ${title.toLowerCase()}.\n\n## Current Status\n- Document framework established\n- Community input being gathered\n- Review and approval process pending\n\n*Last updated: ${new Date().toLocaleDateString()}*`,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       createdBy: "system",
       groupId: ringId,
       category,
-      tags: [],
+      tags: ["draft", "community-input"],
     }
   })
 

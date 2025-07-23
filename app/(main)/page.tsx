@@ -52,8 +52,10 @@ export default function Home() {
   );
 
   // Filter groups by selected locale
-  const filteredGroups = groups.filter((group) => 
-    selectedLocale === "all" || group.tags?.includes(selectedLocale)
+  // Combine all group types (groups, rings, families)
+  const allGroups = [...groups, ...mockRings, ...mockFamilies];
+  const filteredGroups = allGroups.filter((group) => 
+    selectedLocale === "all" || group.tags?.includes(selectedLocale) || group.chapterTags?.includes(selectedLocale)
   );
 
   // Filter users by selected locale

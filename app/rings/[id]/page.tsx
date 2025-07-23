@@ -130,8 +130,9 @@ export default function RingProfilePage({ params }: RingProfilePageProps) {
       </div>
 
       {/* Tabs */}
-      <Tabs defaultValue="feed" className="w-full">
+      <Tabs defaultValue="about" className="w-full">
         <TabsList className="grid w-full grid-cols-9">
+          <TabsTrigger value="about">About</TabsTrigger>
           <TabsTrigger value="feed">Feed</TabsTrigger>
           <TabsTrigger value="families">Families</TabsTrigger>
           <TabsTrigger value="assets">Mutual Assets</TabsTrigger>
@@ -139,7 +140,6 @@ export default function RingProfilePage({ params }: RingProfilePageProps) {
           <TabsTrigger value="treasury">Treasury</TabsTrigger>
           <TabsTrigger value="joint-ventures">Joint Ventures</TabsTrigger>
           <TabsTrigger value="governance">Governance</TabsTrigger>
-          <TabsTrigger value="about">About</TabsTrigger>
           <TabsTrigger value="admins">Admins</TabsTrigger>
         </TabsList>
 
@@ -476,44 +476,60 @@ export default function RingProfilePage({ params }: RingProfilePageProps) {
                       <div className="space-y-2">
                         <h4 className="font-medium text-sm">Community Documents</h4>
                         <div className="space-y-1">
-                          <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
-                            <Heart className="h-4 w-4 mr-2" />
-                            Mutual Aid Charter
-                          </Button>
-                          <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
-                            <Handshake className="h-4 w-4 mr-2" />
-                            Resource Sharing Agreement
-                          </Button>
-                          <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
-                            <Users className="h-4 w-4 mr-2" />
-                            Community Guidelines
-                          </Button>
-                          <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
-                            <Shield className="h-4 w-4 mr-2" />
-                            Conflict Resolution Process
-                          </Button>
+                          <Link href={`/rings/${ring.id}/docs?doc=${ring.id}-mutual-aid-charter`}>
+                            <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
+                              <Heart className="h-4 w-4 mr-2" />
+                              Mutual Aid Charter
+                            </Button>
+                          </Link>
+                          <Link href={`/rings/${ring.id}/docs?doc=${ring.id}-resource-sharing-agreement`}>
+                            <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
+                              <Handshake className="h-4 w-4 mr-2" />
+                              Resource Sharing Agreement
+                            </Button>
+                          </Link>
+                          <Link href={`/rings/${ring.id}/docs?doc=${ring.id}-community-guidelines`}>
+                            <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
+                              <Users className="h-4 w-4 mr-2" />
+                              Community Guidelines
+                            </Button>
+                          </Link>
+                          <Link href={`/rings/${ring.id}/docs?doc=${ring.id}-conflict-resolution-process`}>
+                            <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
+                              <Shield className="h-4 w-4 mr-2" />
+                              Conflict Resolution Process
+                            </Button>
+                          </Link>
                         </div>
                       </div>
                       
                       <div className="space-y-2">
                         <h4 className="font-medium text-sm">Economic Documents</h4>
                         <div className="space-y-1">
-                          <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
-                            <DollarSign className="h-4 w-4 mr-2" />
-                            Treasury Protocols
-                          </Button>
-                          <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
-                            <Package className="h-4 w-4 mr-2" />
-                            Asset Pooling Agreement
-                          </Button>
-                          <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
-                            <Coins className="h-4 w-4 mr-2" />
-                            Member Contribution Guidelines
-                          </Button>
-                          <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
-                            <Gift className="h-4 w-4 mr-2" />
-                            Voucher System Rules
-                          </Button>
+                          <Link href={`/rings/${ring.id}/docs?doc=${ring.id}-treasury-protocols`}>
+                            <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
+                              <DollarSign className="h-4 w-4 mr-2" />
+                              Treasury Protocols
+                            </Button>
+                          </Link>
+                          <Link href={`/rings/${ring.id}/docs?doc=${ring.id}-asset-pooling-agreement`}>
+                            <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
+                              <Package className="h-4 w-4 mr-2" />
+                              Asset Pooling Agreement
+                            </Button>
+                          </Link>
+                          <Link href={`/rings/${ring.id}/docs?doc=${ring.id}-member-contribution-guidelines`}>
+                            <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
+                              <Coins className="h-4 w-4 mr-2" />
+                              Member Contribution Guidelines
+                            </Button>
+                          </Link>
+                          <Link href={`/rings/${ring.id}/docs?doc=${ring.id}-voucher-system-rules`}>
+                            <Button variant="ghost" className="w-full justify-start text-sm h-auto p-2">
+                              <Gift className="h-4 w-4 mr-2" />
+                              Voucher System Rules
+                            </Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
